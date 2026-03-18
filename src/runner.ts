@@ -125,6 +125,7 @@ export async function runTestSuite(yamlPath: string): Promise<{
 
     if (evidence.result === "NG") {
       console.error(`Step ${step.id} FAILED: ${evidence.error}`);
+      break;
     }
   }
 
