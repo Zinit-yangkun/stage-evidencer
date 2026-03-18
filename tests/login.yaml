@@ -1,0 +1,16 @@
+suite:
+  name: "ログイン機能テスト"
+  id: "TC-LOGIN-001"
+  target_url: "https://example.com/login"
+  environment: "ステージング"
+
+steps:
+  - include: "flows/login.yaml"
+
+  - name: "ダッシュボード表示確認"
+    action: "ダッシュボード画面のタイトルと表示内容を確認"
+    type: "extract"
+    schema:
+      page_title: "string"
+      welcome_message: "string"
+    expect: "「ようこそ testuser01 さん」が表示される"

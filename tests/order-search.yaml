@@ -1,0 +1,37 @@
+suite:
+  name: "注文検索機能テスト"
+  id: "TC-ORDER-001"
+  target_url: "https://example.com/orders"
+  environment: "ステージング"
+
+steps:
+  - id: 1
+    name: "注文検索画面表示"
+    action: "注文検索画面が正常に表示されることを確認"
+    type: "observe"
+    expect: "検索条件入力欄と検索ボタンが表示される"
+
+  - id: 2
+    name: "注文番号入力"
+    action: "注文番号欄に'ORD-2026-0001'を入力"
+    type: "act"
+    variables:
+      order_id: "ORD-2026-0001"
+    expect: "注文番号欄に値が入力される"
+
+  - id: 3
+    name: "検索実行"
+    action: "検索ボタンをクリック"
+    type: "act"
+    expect: "検索結果が表示される"
+
+  - id: 4
+    name: "検索結果確認"
+    action: "検索結果の注文情報を確認"
+    type: "extract"
+    schema:
+      order_id: "string"
+      customer_name: "string"
+      total_amount: "string"
+      status: "string"
+    expect: "注文番号ORD-2026-0001の注文情報が表示される"

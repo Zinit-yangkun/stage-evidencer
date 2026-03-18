@@ -1,0 +1,41 @@
+suite:
+  name: "Google検索機能テスト"
+  id: "TC-GSEARCH-001"
+  target_url: "https://www.google.com"
+  environment: "本番"
+
+steps:
+  - id: 1
+    name: "Google検索トップ表示"
+    action: "Google検索のトップページが表示されていることを確認"
+    type: "observe"
+    expect: "検索入力欄と検索ボタンが表示される"
+
+  - id: 2
+    name: "検索キーワード入力"
+    action: "検索欄に'Stagehand browser automation'と入力"
+    type: "act"
+    variables:
+      query: "Stagehand browser automation"
+    expect: "検索欄にキーワードが入力される"
+
+  - id: 3
+    name: "検索実行"
+    action: "Google検索ボタンをクリックするか、Enterキーを押して検索を実行"
+    type: "act"
+    expect: "検索結果ページに遷移する"
+
+  - id: 4
+    name: "検索結果表示確認"
+    action: "検索結果ページに表示されている情報を確認"
+    type: "observe"
+    expect: "検索結果が1件以上表示される"
+
+  - id: 5
+    name: "検索結果データ取得"
+    action: "検索結果の最初の1件のタイトルとURLを取得"
+    type: "extract"
+    schema:
+      title: "string"
+      url: "string"
+    expect: "最初の検索結果のタイトルとURLが取得できる"

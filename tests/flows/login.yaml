@@ -1,0 +1,24 @@
+steps:
+  - name: "ログイン画面表示"
+    action: "ログイン画面が正常に表示されることを確認"
+    type: "observe"
+    expect: "ユーザー名とパスワードの入力欄、ログインボタンが表示される"
+
+  - name: "ユーザー名入力"
+    action: "ユーザー名欄に'testuser01'を入力"
+    type: "act"
+    variables:
+      username: "testuser01"
+    expect: "ユーザー名欄に値が入力される"
+
+  - name: "パスワード入力"
+    action: "パスワード欄に入力"
+    type: "act"
+    variables:
+      password: "${TEST_PASSWORD}"
+    expect: "パスワード欄に値が入力される（マスク表示）"
+
+  - name: "ログインボタン押下"
+    action: "ログインボタンをクリック"
+    type: "act"
+    expect: "ダッシュボード画面に遷移する"
